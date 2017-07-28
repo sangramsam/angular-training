@@ -10,33 +10,57 @@
 
     <script src="app.js"></script>
 </head>
-<body ng-controller="main">
+<body ng-controller="ctrl1">
 <div class="container">
-    <!--<h1>One way Binding</h1>
     <div class="row">
-        <h3 ng-bind="a"></h3>
-        <h3 ng-bind="b"></h3>
-        <button class="btn btn-primary" ng-click="add()">add</button>
+        <div class="col-md-6">
+            <table class="table table-bordered">
+                <tr>
+                    <th>Name</th>
+                    <th>Profile</th>
+                    <th></th>
+                </tr>
+                <tr ng-repeat="da in emp">
+                    <td ng-click="show(da.name)">{{da.name}}</td>
+                    <td ng-click="show(da.profile)">{{da.profile}}</td>
+                    <td ><button class="btn btn-danger">delete</button> </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Name</label>
+                <input class="form-control" ng-model="name" >
+            </div>
+            <div class="form-group">
+                <label>Profile</label>
+                <input class="form-control" ng-model="profile">
+            </div>
+            <button class="btn btn-primary" ng-click="add(name,profile)">Add</button>
+        </div>
     </div>
-    <h1>Sum is {{sum}}</h1>
-    <h1>One time Binding</h1>
-    <h3>{{::a}}</h3>
+    <br/>
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <h2 ng-if="showText==true">Show the text</h2>
+            <button class="btn btn-primary" ng-click="show()">Show</button>
+        </div>
+        <div class="col-md-6">
+            <label>Track change</label>
+            <input class="form-control" ng-model="change" ng-change="trackChange(change)">
+            <h2>{{track}}</h2>
 
-    <h1>Two way Binding</h1>
-    <input type="text" ng-model="data" class="form-control">
-    {{data}}-->
+            <h2 ng-mouseover="trackColor()" ng-mouseleave="trackColor()" ng-class="{tt:over==true}">Hello over me</h2>
+            <div ng-init="myText='Hello World!'">{{myText}}</div>
+        </div>
 
-    <div class="col-lg-6">
-        <label for="name">Name</label> <br/>
-        <input type="text" ng-model="login.name" class="form-control"> <br/>
-        <label for="name">email</label>
-        <input type="text" ng-model="lohiemail" class="form-control"><br/>  <bR/>
-        <button class="btn btn-primary" ng-click="login(name,email)">Login</button>
-    </div>
-    <div class="col-lg-6">
-        <h2>Name is {{username}}</h2>
-        <h2>Name is {{emails}}</h2>
     </div>
 </div>
+<style>
+    .tt{
+        color:red;
+    }
+</style>
 </body>
 </html>
