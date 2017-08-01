@@ -14,15 +14,20 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
+            <div class="form-group">
+                <input type="text" class="form-control" ng-model="search" placeholder="search">
+            </div>
             <table class="table table-bordered">
                 <tr>
                     <th>Name</th>
                     <th>Profile</th>
+                    <th>Date</th>
                     <th></th>
                 </tr>
-                <tr ng-repeat="da in emp">
-                    <td ng-click="show(da.name)">{{da.name}}</td>
+                <tr ng-repeat="da in emp | filter:search">
+                    <td ng-click="show(da.name)">{{da.name | myfil }}</td>
                     <td ng-click="show(da.profile)">{{da.profile}}</td>
+                    <td >{{da.date| date:'MM-dd-yyyy'}}</td>
                     <td ><button class="btn btn-danger">delete</button> </td>
                 </tr>
             </table>
