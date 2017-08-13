@@ -7,12 +7,14 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script src="app.js"></script>
 </head>
 <body ng-controller="ctrl1">
 <div class="container">
-    <div class="row">
+    <!--<div class="row">
         <div class="col-md-6">
             <div class="form-group">
                 <input type="text" class="form-control" ng-model="search" placeholder="search">
@@ -60,12 +62,158 @@
             <div ng-init="myText='Hello World!'">{{myText}}</div>
         </div>
 
+    </div>-->
+    <!--<div class="row">
+        <div class="col-md-6">
+            <form name="myForm" novalidate>
+                <div class="form-group "
+                     ng-class="{'has-error':myForm.username.$invalid==true && myForm.username.$pristine==false}">
+                    <label for="username">Username</label>
+                    <input type="email" ng-model="username" class="form-control" required name="username">
+                    <div ng-show="!myForm.username.$valid  && myForm.username.$touched">This field is required</div>
+                </div>
+                <div class="form-group">
+                    <label for="pss">Password</label>
+                    <input type="password" ng-model="password" class="form-control" name="password" required>
+                    <div ng-show="!myForm.password.$valid  && myForm.password.$touched">This field is required</div>
+                </div>
+                <div ng-show="myForm.username.$touched && myForm.username.$error.required" class="errorMessage">
+                    You must enter a first name
+                </div>
+            </form>
+            <button class="btn btn-success" ng-disabled="myForm.username.$invalid || myForm.password.$invalid" disabled
+                    ng-click="submit(username,password)">
+                Submit
+            </button>
+        </div>
+        <div class="col-md-6">
+            <button class="btn btn-primary" disabled>Disable</button>
+        </div>
     </div>
-</div>
-<style>
-    .tt{
-        color:red;
-    }
-</style>
+    <custom-Element id="data"></custom-Element>
+
+
+    <h1>Happstry Demo</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <input type="text" ng-model="da.text" ng-repeat="da in trackValue">
+            <button class="btn btn-primary" ng-click="add(da)">Add More</button>
+        </div>
+        <div class="col-md-6"></div>
+    </div>-->
+
+    <br/><br/>
+   <!-- <div class="col-md-5">
+        <div ng-repeat="da in blk track by $index">
+            <div class="row">
+                <div class="col-md-4"><input type="text" class="form-control" ng-model="da.name"></div>
+                <div class="col-md-4"><input type="text" class="form-control" ng-model="da.email"></div>
+                <div class="col-md-2">
+                    <button class="btn btn-default" ng-click="addMore()" ng-if="da.name=='' || da.email=='' ">add
+                    </button>
+                    <button class="btn btn-default" ng-click="delete()" ng-if="da.name!='' &&  da.eamil!='' ">Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        {{blk}}
+
+    </div>
+    <br/>
+    <div style="margin-top: 60px">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingOne">
+                            <h4 class="panel-title">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                                   aria-expanded="true" aria-controls="collapseOne">
+                                    Billing Address
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
+                             aria-labelledby="headingOne">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="name">Name</label>
+                                            <input type="text" id="name" class="form-control" ng-model="bill.name"
+                                                   placeholder="Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="Mno">Mobile No.</label>
+                                        <input type="text" id="Mno" class="form-control" ng-model="bill.No"
+                                               placeholder="Name">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="name">address</label>
+                                            <textarea class="form-control" ng-model="bill.addr"
+                                                      placeholder="address"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn text-center btn-success" ng-click="save(bill)" data-toggle="collapse" data-parent="#accordion"
+                                        href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">save</button>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingTwo">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button">
+                                        Shopping Address
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
+                                 aria-labelledby="headingTwo">
+                                <div class="panel-body">
+                                    <input type="checkbox" id="same" ng-model="trackAddress">
+                                    <label for="same">Use the Billing address {{trackAddress}}</label>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="sname">Name</label>
+                                                <input type="text" id="sname" ng-model="sAddress.name" class="form-control" placeholder="Name">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="sMno">Mobile No.</label>
+                                            <input type="text" id="sMno" ng-model="sAddress.No" class="form-control" placeholder="Name">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="sname">address</label>
+                                                <textarea class="form-control" ng-model="sAddress.addr" placeholder="address"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="btn text-center btn-success" ng-click="saveShop()">save</button>
+                                    {{sAddress.name}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3"></div>
+            </div>
+        </div>
+    </div>-->
+
+    <style>
+        .tt {
+            color: red;
+        }
+    </style>
 </body>
 </html>
