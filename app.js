@@ -1,4 +1,4 @@
-var app = angular.module("app", []);
+var app = angular.module("app", ['ngRoute']);
 app.controller("ctrl1", function ($scope, git) {
     /*$scope.emp = [
         {
@@ -126,12 +126,19 @@ app.controller("ctrl1", function ($scope, git) {
             ];
         }
     });*/
-    var name="pratikshaparsewar"
+    var name = "pratikshaparsewar"
 
     git.getUser(name).then(function (response) {
         console.log(response)
     });
 });
+app.controller('mainCtrl', function ($scope) {
+    $scope.route = "HELLO";
+})
+
+app.controller('mainctrl1', function($scope){
+
+})
 app.filter("myfil", function () {
     return function (value) {
         console.log("inside filter", value);
@@ -152,7 +159,7 @@ app.factory("git", function ($http, $q) {
     function getUser(name) {
         var deferred = $q.defer();
         $http({
-            url: "https://api.github.com/users/"+name,
+            url: "https://api.github.com/users/" + name,
             method: "get"
         }).then(function (response) {
             deferred.resolve({
@@ -165,6 +172,26 @@ app.factory("git", function ($http, $q) {
     return {
         getUser: getUser
     }
+
+
+});
+
+app.config(function ($routeProvider) {
+    $routeProvider.when("/home", {
+        templateUrl: "main.html", controller: 'mainCtrl'
+    })
+        .when("/", {
+            templateUrl: "home.html",
+            controller: 'mainCtrl'
+        })
+        .when("/demo", {
+            templateUrl: "demo.html",
+            controller: 'mainctrl1'
+        })
+        .when("/prac" , {
+            template:"<h1>Pratiksha parsewar</h1><br> <h2>hello, its me</h2>",
+            controller:'mainctrl1'
+        })
 });
 
 
