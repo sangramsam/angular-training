@@ -134,9 +134,10 @@ app.controller("ctrl1", function ($scope, git) {
 });
 app.controller('mainCtrl', function ($scope) {
     $scope.route = "HELLO";
+    $scope.name = "daa";
 })
 
-app.controller('mainctrl1', function($scope){
+app.controller('mainctrl1', function ($scope) {
 
 })
 app.filter("myfil", function () {
@@ -188,9 +189,9 @@ app.config(function ($routeProvider) {
             templateUrl: "demo.html",
             controller: 'mainctrl1'
         })
-        .when("/prac" , {
-            template:"<h1>Pratiksha parsewar</h1><br> <h2>hello, its me</h2>",
-            controller:'mainctrl1'
+        .when("/prac", {
+            template: "<h1>Pratiksha parsewar</h1><br> <h2>hello, its me</h2>",
+            controller: 'mainctrl1'
         })
 });
 
